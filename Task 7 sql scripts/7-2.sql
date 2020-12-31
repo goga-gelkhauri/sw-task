@@ -1,0 +1,58 @@
+USE [DatabaseName]
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*Pupil Table*/
+CREATE TABLE [dbo].[Pupil](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nchar](30) NULL,
+	[LastName] [nchar](30) NULL,
+	[Gender] [nchar](20) NULL,
+	[Class] [nvarchar](10) NULL,
+ CONSTRAINT [PK_Pupil] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*Teacher Table*/
+CREATE TABLE [dbo].[Teacher](
+	[Id] [int] NOT NULL,
+	[Name] [nchar](30) NULL,
+	[LastName] [nchar](30) NULL,
+	[Gender] [nchar](20) NULL,
+	[Object] [nchar](30) NULL,
+ CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*Teacher_Pupil Table*/
+CREATE TABLE [dbo].[Teacher_Pupil](
+	[Id] [int] NOT NULL,
+	[T_Id] [int] NOT NULL,
+	[P_Id] [int] NOT NULL,
+ CONSTRAINT [PK_Teacher_Pupil] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Teacher_Pupil]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Pupil_Pupil] FOREIGN KEY([P_Id])
+REFERENCES [dbo].[Pupil] ([Id])
+GO
+
+ALTER TABLE [dbo].[Teacher_Pupil] CHECK CONSTRAINT [FK_Teacher_Pupil_Pupil]
+GO
+
+ALTER TABLE [dbo].[Teacher_Pupil]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Pupil_Teacher] FOREIGN KEY([T_Id])
+REFERENCES [dbo].[Teacher] ([Id])
+GO
+
+ALTER TABLE [dbo].[Teacher_Pupil] CHECK CONSTRAINT [FK_Teacher_Pupil_Teacher]
+GO

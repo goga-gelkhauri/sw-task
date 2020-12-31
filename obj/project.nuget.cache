@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rn6hav2/aIS4aCR/HpyYy77xQYvgv2hxDMDEXdu/5ZdBFf37zSMxKOADi5MJnG4Bt1ieVIiGKtXI4w9PuBb2Kg==",
+  "success": true,
+  "projectFilePath": "E:\\c#\\sw\\sw.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gogag\\.nuget\\packages\\htmlagilitypack\\1.11.29\\htmlagilitypack.1.11.29.nupkg.sha512"
+  ],
+  "logs": []
+}
